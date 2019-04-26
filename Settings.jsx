@@ -8,7 +8,7 @@ module.exports = class Settings extends React.Component {
     super(props);
 
     const get = props.settings.get.bind(props.settings);
-    this.plugin = powercord.pluginManager.get('pc-alias');
+    this.plugin = powercord.pluginManager.get('alias');
     this.state = {pairs: get('pairs', [])};
 
     this.show = true;

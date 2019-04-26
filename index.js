@@ -5,12 +5,12 @@ const Settings = require('./Settings');
 
 module.exports = class Alias extends Plugin {
   loadVars() {
-    this.pairs = powercord.pluginManager.get('pc-alias').settings.get('pairs');
+    this.pairs = powercord.pluginManager.get('alias').settings.get('pairs');
   }
   
   async startPlugin () {
     this.registerSettings(
-      'pc-alias',
+      'alias',
       'Alias',
       () => React.createElement(Settings, { settings: this.settings })
     );
