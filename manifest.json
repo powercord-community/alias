@@ -1,0 +1,10 @@
+{
+  "name": "Alias",
+  "version": "1.0.0",
+  "description": "Create shortcuts to send pre-set messages",
+  "author": "WD200019",
+  "license": "MIT",
+  "repo": "https://github.com/WD200019/alias",
+  "dependencies": ["pc-commands"]
+}
+  

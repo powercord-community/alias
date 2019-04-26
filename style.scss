@@ -1,0 +1,77 @@
+@-webkit-keyframes loading1 {
+    0% {-webkit-transform: translate( 24px,  24px) rotateZ(360deg);transform: translate( 24px,  24px) rotateZ(360deg);}
+   50% {-webkit-transform: translate(-24px,  24px) rotateZ(270deg);transform: translate(-24px,  24px) rotateZ(270deg);}
+  100% {-webkit-transform: translate(-24px, -24px) rotateZ(180deg);transform: translate(-24px, -24px) rotateZ(180deg);}
+}
+@keyframes loading1 {
+    0% {-webkit-transform: translate( 24px,  24px) rotateZ(360deg);transform: translate( 24px,  24px) rotateZ(360deg);}
+   50% {-webkit-transform: translate(-24px,  24px) rotateZ(270deg);transform: translate(-24px,  24px) rotateZ(270deg);}
+  100% {-webkit-transform: translate(-24px, -24px) rotateZ(180deg);transform: translate(-24px, -24px) rotateZ(180deg);}
+}
+@-webkit-keyframes loading2 {
+    0% {-webkit-transform: translate(-24px, -24px) rotateZ(360deg);transform: translate(-24px, -24px) rotateZ(360deg);}
+   50% {-webkit-transform: translate( 24px, -24px) rotateZ(270deg);transform: translate( 24px, -24px) rotateZ(270deg);}
+  100% {-webkit-transform: translate( 24px,  24px) rotateZ(180deg);transform: translate( 24px,  24px) rotateZ(180deg);}
+}
+@keyframes loading2 {
+    0% {-webkit-transform: translate(-24px, -24px) rotateZ(360deg);transform: translate(-24px, -24px) rotateZ(360deg);}
+   50% {-webkit-transform: translate( 24px, -24px) rotateZ(270deg);transform: translate( 24px, -24px) rotateZ(270deg);}
+  100% {-webkit-transform: translate( 24px,  24px) rotateZ(180deg);transform: translate( 24px,  24px) rotateZ(180deg);}
+}
+
+.powercord-alias-header {
+  color: #fff;
+  display: inline;
+}
+
+.powercord-alias-loading1,
+.powercord-alias-loading2 {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-color: #7289da;
+  position: absolute;
+}
+
+.powercord-alias-loading1 {
+  -webkit-animation: loading1 1s ease-in-out infinite;
+  animation: loading1 1s ease-in-out infinite;
+}
+.powercord-alias-loading2 {
+  -webkit-animation: loading2 1s ease-in-out infinite;
+  animation: loading2 1s ease-in-out infinite;
+}
+
+.powercord-alias-example {
+  color: #fff;
+  font-family: courier new;
+  display: inline;
+  border: 1px dashed #aaa;
+  background: #333;
+  margin-top: 4px;
+  margin-left: 4px;
+  padding: 2px;
+}
+
+.powercord-alias-pair {
+  border-radius: 5px;
+  border: 1px solid #202225;
+  background: #292B2F;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.powercord-alias-button {
+  background: #F04747;
+  color: #fff;
+  border-radius: 4px;
+  border: 1px solid #F04747;
+
+  position: relative;
+  float: right;
+  bottom: 8px;
+
+  height: 32px;
+  min-height: 32px;
+  min-width: 60px;
+}
