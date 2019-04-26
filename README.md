@@ -9,4 +9,4 @@ See the example gif below for details:
 
 ## Installation
 1. Download with `git clone https://github.com/WD200019/alias pc-alias`
-2. Move `pc-alias` to `Powercord/src/plugins/` and restart
+2. Move `pc-alias` to `Powercord/src/powercord/plugins/` and restart
