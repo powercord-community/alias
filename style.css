@@ -16,10 +16,28 @@
   
   font-size: 16px;
 }
+.theme-light .powercord-alias-textarea {
+  color: #4F545C;
+  background-color: #F5F6F6;
+  border-color: #BABDBF;
+}
 
 .powercord-alias-header {
   color: #fff;
   display: inline;
+}
+.theme-light .powercord-alias-header {
+  color: #63676E;
+}
+
+.powercord-alias-description {
+  color: #72767d;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.theme-light .powercord-alias-description {
+  color: #AEB1B4;
 }
 
 .powercord-alias-example {
@@ -32,6 +50,11 @@
   margin-left: 4px;
   padding: 2px;
 }
+.theme-light .powercord-alias-example {
+  color: #000;
+  border-color: #000;
+  background: #eee;
+}
 
 .powercord-alias-pair {
   border-radius: 5px;
@@ -42,6 +65,11 @@
 }
 .powercord-alias-pair#new {
   margin-top: 20px;
+}
+.theme-light .powercord-alias-pair {
+  color: #4F545C;
+  background-color: #F8F9F9;
+  border-color: #DCDDDE;
 }
 
 .powercord-alias-button {

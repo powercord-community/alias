@@ -8,31 +8,27 @@ module.exports = class Settings extends React.Component {
   constructor (props) {
     super(props);
 
-    this.plugin = powercord.pluginManager.get("alias");
-    this.state = {pairs: this.props.getSetting("pairs", [])};
-
     this.show = true;
   }
 
-  displayItems() {
+  displayItems () {
     let items = [];
-    if (this.state.pairs.length > 0) {
-      for (let i = 0; i < this.state.pairs.length; i++) {
-        items.push(this.state.pairs[i]);
+    if (this.props.getSetting("pairs", []).length > 0) {
+      for (let i = 0; i < this.props.getSetting("pairs", []).length; i++) {
+        items.push(this.props.getSetting("pairs", [])[i]);
       }
     }
-    return (this.state.pairs.length > 0
+    return (this.props.getSetting("pairs", []).length > 0
             ? items.map((p, i) => <Pair pos={i} p={p} parentProps={this.getPropsToPass()}/>)
             : <h2 className="powercord-alias-header">No aliases!<div class="powercord-alias-break"/></h2>);
   }
 
-  getPropsToPass() {
+  getPropsToPass () {
     return {
-      checkUnique: (v, k, i, plug) => {return this.checkUnique(v, k, i, this.plugin)},
+      checkUnique: (v, k, i, plug) => this.checkUnique(v, k, i),
       setPairs:    (v)             => {this.props.updateSetting("pairs", v); this.setState({"pairs": v})},
-      getPairs:    ()              => {return this.state.pairs},
-      loadVars:    ()              => {this.plugin.loadVars()},
-      reload:      ()              => {this.reload()}
+      getPairs:    ()              => this.props.getSetting("pairs", []),
+      reload:      ()              => this.reload()
     };
   }
 
@@ -61,7 +57,7 @@ module.exports = class Settings extends React.Component {
       );
   }
 
-  checkUnique(v, k, indexed, plug) {
-    return plug.unique(v, k, this.state.pairs, indexed);
+  checkUnique (val, key, indexed) {
+    return this.props.getSetting("pairs", []).filter(function(v, k, t) { return v[0] == val }).length <= (indexed ? 0 : 1);
   }
 };
