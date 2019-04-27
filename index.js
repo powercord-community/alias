@@ -12,7 +12,7 @@ module.exports = class Alias extends Plugin {
     this.registerSettings(
       "alias",
       "Alias",
-      () => React.createElement(Settings)
+      Settings
     );
     this.loadCSS(resolve(__dirname, "style.css"));
     this.registerCommand(

@@ -9,7 +9,7 @@ module.exports = class Settings extends React.Component {
     super(props);
 
     this.plugin = powercord.pluginManager.get("alias");
-    this.state = {pairs: this.plugin.settings.get("pairs", [])};
+    this.state = {pairs: this.props.getSetting("pairs", [])};
 
     this.show = true;
   }
@@ -29,7 +29,7 @@ module.exports = class Settings extends React.Component {
   getPropsToPass() {
     return {
       checkUnique: (v, k, i, plug) => {return this.checkUnique(v, k, i, this.plugin)},
-      setPairs:    (v)             => {this.plugin.settings.set("pairs", v); this.setState({"pairs": v})},
+      setPairs:    (v)             => {this.props.updateSetting("pairs", v); this.setState({"pairs": v})},
       getPairs:    ()              => {return this.state.pairs},
       loadVars:    ()              => {this.plugin.loadVars()},
       reload:      ()              => {this.reload()}
