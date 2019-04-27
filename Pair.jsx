@@ -68,7 +68,7 @@ module.exports = class Pair extends React.Component {
         />
         {
           this.props.pos == -1
-          ? <div className="default-3nhoK- formText-3fs7AJ pc-default pc-formText description-3_Ncsb formText-3fs7AJ pc-description pc-formText modeDefault-3a2Ph1 pc-modeDefault primary-jw0I4K">
+          ? <div className="powercord-alias-description pc-description">
               What your alias will send (can NOT trigger other commands!)
             </div>
           : ''
@@ -116,7 +116,7 @@ module.exports = class Pair extends React.Component {
 
         {
           this.isValid()
-            ? <div><h3 className="powercord-alias-header">Usage: </h3><h3 className="powercord-alias-example"><font style={{color:"#888"}}>{powercord.api.commands.prefix}alias</font> {this.state.key}</h3></div>
+            ? <div><h3 className="powercord-alias-header">Usage: </h3><h3 className="powercord-alias-example"><font style={{opacity:0.6}}>{powercord.api.commands.prefix}alias</font> {this.state.key}</h3></div>
             : this.state.pos > -1 ? <h3 className="powercord-alias-header">Invalid</h3> : <h3 className="powercord-alias-header">Type a name and value, then click the button to add your new alias!</h3>
         }
       </div>

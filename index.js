@@ -4,10 +4,6 @@ const { resolve } = require("path");
 const Settings = require("./Settings");
 
 module.exports = class Alias extends Plugin {
-  loadVars() {
-    this.pairs = this.settings.get("pairs", []);
-  }
-  
   async startPlugin () {
     this.registerSettings(
       "alias",
@@ -22,10 +18,9 @@ module.exports = class Alias extends Plugin {
       "{c} [ alias name ]",
       (args) => ({
         send: true,
-        result: this.pairs.filter(this.unique).find(p => p[0] == args[0])[1] + (args.length > 0 ? (" " + args.splice(1, args.length - 1).join(" ")) : "")
+        result: this.settings.get("pairs", []).filter(this.unique).find(p => p[0] == args[0])[1] + (args.length > 0 ? (" " + args.splice(1, args.length - 1).join(" ")) : "")
       })
     );
-    this.loadVars();
   }
 
   unique(value, index, self, ignoreSelf) {
