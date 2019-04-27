@@ -52,8 +52,10 @@ module.exports = class pair extends React.Component {
           style={(this.state.pos > -1 ? this.IsValid(false) : this.props.parent.plugin.unique(this.state.key, this.state.pos, this.props.parent.state.pairs, false)) ? {} : {borderColor: '#e53935'}}
         ></TextInput>
 
-        <TextInput
-          onChange={(e) => {
+        <textarea
+          id={"powercord-alias-val-" + this.props.pos}
+          onInput={() => {
+            var e = document.getElementById("powercord-alias-val-" + this.props.pos).value;
             this.setState({"val": e});
             if (this.state.pos > -1 && this.IsValid(true)) {
               if (this.state.key != '' && e != '') {
@@ -65,8 +67,18 @@ module.exports = class pair extends React.Component {
             }
           }}
           defaultValue={this.state.pos > -1 ? this.state.val : ''}
-          note={this.state.pos == -1 ? 'What your alias will send (can NOT trigger other commands!)' : ''}
-        ></TextInput>
+          class="inputDefault-_djjkz input-cIJ7To size16-14cGz5 pc-inputDefault pc-input pc-size16"
+          style={{height:"auto",resize:"none",overflowY:"hidden"}}
+        ></textarea>
+        {
+          this.props.pos == -1
+          ? <div class="default-3nhoK- formText-3fs7AJ pc-default pc-formText description-3_Ncsb formText-3fs7AJ pc-description pc-formText modeDefault-3a2Ph1 pc-modeDefault primary-jw0I4K">
+              What your alias will send (can NOT trigger other commands!)
+            </div>
+          : <br/>
+        }
+        <div class="divider-3573oO pc-divider marginTop20-3TxNs6 pc-marginTop20"/>
+        <br/>
 
         {
           this.state.pos > -1
