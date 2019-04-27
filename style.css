@@ -1,0 +1,51 @@
+.powercord-alias-break {
+  height: 12px;
+}
+
+.powercord-alias-textarea {
+  color: #f6f6f7;
+  background-color: rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 3px;
+  
+  padding: 10px;
+  height: auto;
+  resize: none;
+  overflow-y: hidden;
+  width: 100%;
+  
+  font-size: 16px;
+}
+
+.powercord-alias-header {
+  color: #fff;
+  display: inline;
+}
+
+.powercord-alias-example {
+  color: #fff;
+  font-family: courier new;
+  display: inline;
+  border: 1px dashed #aaa;
+  background: #333;
+  margin-top: 4px;
+  margin-left: 4px;
+  padding: 2px;
+}
+
+.powercord-alias-pair {
+  border-radius: 5px;
+  border: 1px solid #202225;
+  background: #292B2F;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.powercord-alias-pair#new {
+  margin-top: 20px;
+}
+
+.powercord-alias-button {
+  position: relative;
+  float: right;
+  bottom: 8px;
+}

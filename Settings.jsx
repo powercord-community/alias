@@ -1,27 +1,39 @@
-const { React } = require('powercord/webpack')
-const { TextInput } = require('powercord/components/settings')
+const { React } = require("powercord/webpack")
+const { TextInput } = require("powercord/components/settings")
+const { Divider, Spinner } = require("powercord/components")
 
-const Pair = require('./Pair.jsx')
+const Pair = require("./Pair.jsx")
 
 module.exports = class Settings extends React.Component {
   constructor (props) {
     super(props);
 
-    const get = props.settings.get.bind(props.settings);
-    this.plugin = powercord.pluginManager.get('alias');
-    this.state = {pairs: get('pairs', [])};
+    this.plugin = powercord.pluginManager.get("alias");
+    this.state = {pairs: this.plugin.settings.get("pairs", [])};
 
     this.show = true;
   }
 
   displayItems() {
-    var items = [];
+    let items = [];
     if (this.state.pairs.length > 0) {
-      for (var i = 0; i < this.state.pairs.length; i++) {
+      for (let i = 0; i < this.state.pairs.length; i++) {
         items.push(this.state.pairs[i]);
       }
     }
-    return (this.state.pairs.length > 0 ? items.map((p, i) => React.createElement(Pair, {p: p, pos: i, parent: this})) : <h2 class='powercord-alias-header'>No aliases!<br/></h2>);
+    return (this.state.pairs.length > 0
+            ? items.map((p, i) => <Pair pos={i} p={p} parentProps={this.getPropsToPass()}/>)
+            : <h2 className="powercord-alias-header">No aliases!<div class="powercord-alias-break"/></h2>);
+  }
+
+  getPropsToPass() {
+    return {
+      checkUnique: (v, k, i, plug) => {return this.checkUnique(v, k, i, this.plugin)},
+      setPairs:    (v)             => {this.plugin.settings.set("pairs", v); this.setState({"pairs": v})},
+      getPairs:    ()              => {return this.state.pairs},
+      loadVars:    ()              => {this.plugin.loadVars()},
+      reload:      ()              => {this.reload()}
+    };
   }
 
   reload () {
@@ -30,35 +42,26 @@ module.exports = class Settings extends React.Component {
   }
 
   render () {
-    var thing = this.displayItems();
-    if (!this.show)
+    if (!this.show) {
       return (
         <div style={{"text-align": "center"}}>
-          <br/><br/><br/><br/>
-          <div class='powercord-alias-loading1'/>
-          <div class='powercord-alias-loading2'/>
+          <div class="powercord-alias-break"/>
+          <Spinner/>
         </div>
       );
-    else
+    } else
       return (
         <div>
           {
-            thing
+            this.displayItems()
           }
-          <br/>
-          <div class="divider-3573oO pc-divider"/>
-          <br/><br/>
-          <Pair pos={-1} parent={this} />
+          <Divider/>
+          <Pair pos={-1} parentProps={this.getPropsToPass()}/>
         </div>
       );
   }
 
-  _set (key, value = !this.state[key], defaultValue) {
-    if (!value && defaultValue) {
-      value = defaultValue;
-    }
-
-    this.props.settings.set(key, value);
-    this.setState({ [key]: value });
+  checkUnique(v, k, indexed, plug) {
+    return plug.unique(v, k, this.state.pairs, indexed);
   }
 };
