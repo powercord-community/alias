@@ -15,6 +15,18 @@
   width: 100%;
   
   font-size: 16px;
+  
+  -webkit-transition: background-color .15s ease, border .15s ease;
+  transition: background-color .15s ease, border .15s ease;
+}
+.powercord-alias-textarea:focus {
+  border-color: #7289da;
+}
+.theme-dark .powercord-alias-textarea:hover:not(:focus) {
+  border-color: #040405;
+}
+.theme-light .powercord-alias-textarea:hover:not(:focus) {
+  border-color: #b9bbbe;
 }
 .theme-light .powercord-alias-textarea {
   color: #4F545C;

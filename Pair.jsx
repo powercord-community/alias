@@ -7,16 +7,14 @@ module.exports = class Pair extends React.Component {
     super(props);
 
     this.state = {
-        pos: this.props.pos,
-        key: this.props.pos > -1 ? this.props.p[0] : "",
-        val: this.props.pos > -1 ? this.props.p[1] : ""
+      pos: this.props.pos,
+      key: this.props.pos > -1 ? this.props.p[0] : "",
+      val: this.props.pos > -1 ? this.props.p[1] : ""
     };
   }
 
   isValid (checkNew) {
-    let check1 = checkNew ? this.state.key : this.state.key;
-    let check2 = checkNew ? this.state.val : this.state.val;
-    return check1 != "" && check2 != "" && check1.indexOf(" ") == -1 && this.state.pos > -1 && this.props.parentProps.checkUnique(check1, this.state.pos, false);
+    return this.state.key != "" && this.state.val != "" && this.state.key.indexOf(" ") == -1 && this.state.pos > -1 && this.props.parentProps.checkUnique(this.state.key, this.state.pos, false);
   }
 
   isValidNew () {

@@ -5,21 +5,14 @@ const { Divider, Spinner } = require("powercord/components")
 const Pair = require("./Pair.jsx")
 
 module.exports = class Settings extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.show = true;
-  }
-
   displayItems () {
     let items = [];
     if (this.props.getSetting("pairs", []).length > 0) {
-      for (let i = 0; i < this.props.getSetting("pairs", []).length; i++) {
+      for (let i = 0; i < this.props.getSetting("pairs", []).length; i++)
         items.push(this.props.getSetting("pairs", [])[i]);
-      }
     }
     return (this.props.getSetting("pairs", []).length > 0
-            ? items.map((p, i) => <Pair pos={i} p={p} parentProps={this.getPropsToPass()}/>)
+            ? items.map((p, i) => <Pair key={p[0] + i.toString()} pos={i} p={p} parentProps={this.getPropsToPass()}/>)
             : <h2 className="powercord-alias-header">No aliases!<div class="powercord-alias-break"/></h2>);
   }
 
@@ -28,33 +21,20 @@ module.exports = class Settings extends React.Component {
       checkUnique: (v, k, i, plug) => this.checkUnique(v, k, i),
       setPairs:    (v)             => {this.props.updateSetting("pairs", v); this.setState({"pairs": v})},
       getPairs:    ()              => this.props.getSetting("pairs", []),
-      reload:      ()              => this.reload()
+      reload:      ()              => this.forceUpdate()
     };
   }
 
-  reload () {
-    this.show = false;
-    setTimeout(() => {this.show = true; this.forceUpdate();}, 200);
-  }
-
   render () {
-    if (!this.show) {
-      return (
-        <div style={{"text-align": "center"}}>
-          <div class="powercord-alias-break"/>
-          <Spinner/>
-        </div>
-      );
-    } else
-      return (
-        <div>
-          {
-            this.displayItems()
-          }
-          <Divider/>
-          <Pair pos={-1} parentProps={this.getPropsToPass()}/>
-        </div>
-      );
+    return (
+      <div>
+        {
+          this.displayItems()
+        }
+        <Divider/>
+        <Pair key={" " + this.props.getSetting("pairs", []).length} pos={-1} parentProps={this.getPropsToPass()}/>
+      </div>
+    );
   }
 
   checkUnique (val, key, indexed) {
