@@ -7,6 +7,9 @@ See the example gif below for details:
 ## Example
 ![](Example.gif)
 
+You can use either `.alias <aliasName>` or `.a <aliasName>`.  
+Type `.alias` by itself to see a short list of aliases.
+
 ## Installation
-1. Download with `git clone https://github.com/WD200019/alias alias`
-2. Move `alias` to `Powercord/src/powercord/plugins/` and restart
+1. Download with `git clone https://github.com/powercord-community/alias alias`
+2. Move `alias` to `Powercord/src/powercord/plugins/` and restart Discord Canary
