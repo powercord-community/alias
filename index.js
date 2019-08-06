@@ -14,7 +14,7 @@ module.exports = class Alias extends Plugin {
     this.registerCommand(
       "alias",
       ["a"],
-      "Paste pre-set text for a given name.",
+      "Send a message you previously set in the \"Alias\" settings menu.",
       "{c} [ alias name ]",
       function (args) {
         if (args.length == 0)
@@ -46,6 +46,24 @@ module.exports = class Alias extends Plugin {
               }
             }
         }
+      }.bind(this),
+      function (args) {
+        var output = this.settings.get("pairs", [])
+                         .filter(this.unique)
+                         .filter(p => p[0].toLowerCase().includes((args[0] || "").toLowerCase()) && p[0].toLowerCase() !== args[0].toLowerCase())
+                         .map(function(currentValue, index, arr) {
+                           return {
+                               command : currentValue[0],
+                               aliases : [],
+                               description : currentValue[1],
+                               func : function() {},
+                               autocompleteFunc : function() {}
+                           }
+                         });
+        return (output.length > 0) ? {
+          commands:  output,
+          header: "Aliases"
+        } : null
       }.bind(this)
     );
   }
