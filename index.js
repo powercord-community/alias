@@ -48,7 +48,7 @@ module.exports = class Alias extends Plugin {
         }
       }.bind(this),
       function (args) {
-        var output = this.settings.get("pairs", [])
+        const output = this.settings.get("pairs", [])
                          .filter(this.unique)
                          .filter(p => p[0].toLowerCase().includes((args[0] || "").toLowerCase()) && p[0].toLowerCase() !== args[0].toLowerCase())
                          .map(function(currentValue, index, arr) {
