@@ -50,7 +50,7 @@ module.exports = class Alias extends Plugin {
       function (args) {
         const output = this.settings.get("pairs", [])
                          .filter(this.unique)
-                         .filter(p => p[0].toLowerCase().includes((args[0] || "").toLowerCase()) && p[0].toLowerCase() !== args[0].toLowerCase())
+                         .filter(p => p[0].toLowerCase().includes((args[0] || "").toLowerCase()) && ((args.length > 0 && p[0].toLowerCase() !== args[0].toLowerCase()) || args.length == 0))
                          .map(function(currentValue, index, arr) {
                            return {
                                command : currentValue[0],
