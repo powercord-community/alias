@@ -84,6 +84,10 @@
   border-color: #DCDDDE;
 }
 
+.powercord-alias-pair > div:nth-child(3) > div[class*="divider-"] {
+  display: none;
+}
+
 .powercord-alias-button {
   position: relative;
   float: right;

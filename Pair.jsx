@@ -70,8 +70,6 @@ module.exports = class Pair extends React.Component {
           : ''
         }
         <div class="powercord-alias-break"/>
-        <Divider/>
-        <div class="powercord-alias-break"/>
 
         {
           this.state.pos > -1
